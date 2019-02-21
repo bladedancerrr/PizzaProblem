@@ -1,1 +1,1 @@
-print("Peter is the best")
+print("Peter is the WORST, HAHAHAHA")
