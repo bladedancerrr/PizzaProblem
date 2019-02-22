@@ -1,1 +1,0 @@
-print("dis lil cutie ayesha")
