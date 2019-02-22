@@ -9,25 +9,19 @@ class Pizza:
 	pizzaDict = {}
 
 	# this is run once only when we create the object
-	def __init__(self, textFileName):
+	def __init__(self, fileName):
 		"""
 		:type textFileName: string
 
 		This function takes a textFileName as input, finds that file in the same directory, processes it, 
 		and updates the properties and pizzaDict
-
-		sampleTextFile:
-		3 5 1 6
-		TTTTT
-		TMMMT
-		TTTTT
 		"""
 
 		### processing code goes here:
 
-		textFile = self.textFile(textFileName)
-		self.updateRCLH(textFile)
-		self.updatePizzaDict(textFile)
+		lines = self.textFile(fileName)
+		self.updateRCLH(lines)
+		self.updatePizzaDict(lines)
 
 		### testing is done here:
 
@@ -38,49 +32,43 @@ class Pizza:
 
 	### processing functions written here
 	
-	def textFile(self, textFileName):
+	def textFile(self, fileName):
 		"""
 		returns a python text file from the directory
 		"""
-		pass
-
-	def updateRCLH(self, textFile):
+		lines = open(fileName).readlines()
+		return lines
+	    
+	def updateRCLH(self, lines):
 		"""
 		grab the data from the textFile and update the properties
 		"""
+		self.rows, self.cols, self.minOfEachIngredient, self.maxCells = [int(val) for val in lines[0].split()]
 
-		#sample values that need to be updated
-		self.rows = 2
-		self.cols = 5
-		self.minOfEachIngredient = 1
-		self.maxCells = 6
-
-	def updatePizzaDict(self, textFile):
+	def updatePizzaDict(self, lines):
 		"""
 		grab the data from the textFile and update pizzaDict
 		"""
-
-		# this is tricky, coz you gotta change all the T to 1 ; M to 0 then put them into the pizzaDict
-		self.pizzaDict = {0: [1, 1, 1, 1, 1], 1: [1, 0, 0, 0, 1], 2: [1, 1, 1, 1, 1]}
-
+		key = 0
+		for row in lines[1:]:
+			self.pizzaDict[key] = list(map(lambda item: 1 if item == 'T' else 0, row.strip()))
+			key += 1
 
 
 	### testing functions written here
 
-	#Lexon's note: we can use Ayesha's test library
-
 	def testRows(self):
-		# example
 		assert self.rows >= 1 and self.rows <= 1000, "Rows out of bounds!"
 
 	def testCols(self):
-		pass
+		assert self.cols >= 1 and self.cols <= 1000, "Rows out of bounds!"
 
 	def testMinOfEachIngredient(self):
-		pass
+		assert self.minOfEachIngredient >= 1 and self.minOfEachIngredient <= 1000, "Rows out of bounds!"
 
 	def testMaxCells(self):
-		pass
+		assert self.maxCells >= 1 and self.maxCells <= 1000, "Rows out of bounds!"
+
 
 	def testProperties(self):
 		self.testRows()
@@ -90,7 +78,6 @@ class Pizza:
 		print("Properties tests passed!")
 
 	def testPizzaDict(self):
-		print(len(self.pizzaDict.keys()), self.rows)
 		assert len(self.pizzaDict.keys()) == self.rows, "What the hell?! Number of keys should equal number of rows!"
 		for row in self.pizzaDict.values():
 			assert len(row) == self.cols, "Hey!! Number of items in list should equal number of columns!"
@@ -98,7 +85,7 @@ class Pizza:
 
 
 
-pizza = Pizza("someTextFileName")
+pizza = Pizza("inputFiles/a_example.in")
 
 # Processing and testing done. We can use now! Yay!
 print("Number of rows of the Pizza: ", pizza.rows)
