@@ -5,6 +5,7 @@ class Pizza:
 	cols = 0
 	minOfEachIngredient = 0
 	maxCells = 0
+	isValidSlice = True
 
 	pizzaDict = {}
 
@@ -84,6 +85,8 @@ class Pizza:
 		print("PizzaDict test passed!")
 
 
+	def isValidSlice(self):
+		return self.rows * self.cols <= self.maxCells
 
 pizza = Pizza("inputFiles/a_example.in")
 
