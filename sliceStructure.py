@@ -1,28 +1,33 @@
 class Slice:
 
-	start_r = 0
-	start_c = 0
-	end_r = 0
-	end_c = 0
+	startRow = 0
+	startCol = 0
+	endRow = 0
+	endCol = 0
 
 	def __init__(self, s_r, s_c, e_r, e_c):
-		self.start_r = s_r
-		self.start_c = s_c
-		self.end_r = e_r
-		self.end_c = e_c
+		self.startRow = s_r
+		self.startCol = s_c
+		self.endRow = e_r
+		self.endCol = e_c
 
 	def extendLeft(self):
-		self.start_c -= 1
+		self.startCol -= 1
 
 
 	def extendRight(self):
-		self.end_c += 1
+		self.endCol += 1
 
 
 	def extendUp(self):
-		self.start_r -= 1 
+		self.startRow -= 1 
 
 
 	def extendDown(self):
-		self.end_r += 1
+		self.endRow += 1
+
+
+if __name__ == "__main__":
+	slice = Slice(0, 0, 2, 2)
+
  
