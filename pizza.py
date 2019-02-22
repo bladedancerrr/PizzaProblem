@@ -25,4 +25,3 @@ fig, ax = plt.subplots()
 ax.imshow(pizza)
 ax.set_title(f'medium.in shape is {pizza.shape}, max. score {pizza.size}\nmin. ingredients is {L}, max. piza slice is {H}');
 plt.show()
-
