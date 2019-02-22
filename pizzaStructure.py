@@ -63,13 +63,13 @@ class Pizza:
 		assert self.rows >= 1 and self.rows <= 1000, "Rows out of bounds!"
 
 	def testCols(self):
-		assert self.cols >= 1 and self.cols <= 1000, "Rows out of bounds!"
+		assert self.cols >= 1 and self.cols <= 1000, "Cols out of bounds!"
 
 	def testMinOfEachIngredient(self):
-		assert self.minOfEachIngredient >= 1 and self.minOfEachIngredient <= 1000, "Rows out of bounds!"
+		assert self.minOfEachIngredient >= 1 and self.minOfEachIngredient <= 1000, "minOfEachIngredient out of bounds!"
 
 	def testMaxCells(self):
-		assert self.maxCells >= 1 and self.maxCells <= 1000, "Rows out of bounds!"
+		assert self.maxCells >= 1 and self.maxCells <= 1000, "maxCells out of bounds!"
 
 
 	def testProperties(self):
