@@ -19,7 +19,7 @@ def read_input_pizza(filename):
     print(pizza)
 
 
-R, C, L, H, pizza = read_input_pizza('/home/ayesha/GoogleHashCode/inputFiles/a_example.in')
+R, C, L, H, pizza = read_input_pizza('/inputFiles/a_example.in')
 
 # fig, ax = plt.subplots()
 # ax.imshow(pizza)
