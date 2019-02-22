@@ -10,7 +10,8 @@ class Pizza:
 	pizzaDict = {}
 
 	# this is run once only when we create the object
-	def __init__(self, fileName):
+	def __init__(self, fileName=None):
+		assert filename!=None "Please input file name." 
 		"""
 		:type textFileName: string
 
