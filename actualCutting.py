@@ -7,5 +7,5 @@ def perform_actual_cutting(slice, dimension_tuple):
     vertical_cutpoints = dimension_tuple[1]
 
 
-
+    print()
     pass
