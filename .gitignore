@@ -2,3 +2,5 @@
 .DS_Store
 .DS_Store
 __pycache__/pizzaStructure.cpython-36.pyc
+.idea/workspace.xml
+.DS_Store
