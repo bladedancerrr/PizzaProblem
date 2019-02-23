@@ -1,95 +1,63 @@
-class Pizza:
+import numpy as np
+from sliceStructure import Slice
+import matplotlib.pyplot as plt
 
-	# properties
+class Dish:
+	def __init__(self, pizza):
+		self.dish = np.zeros(self.pizzaArray.shape, dtype=int)
+
+class Pizza:
 	rows = 0
 	cols = 0
-	minOfEachIngredient = 0
-	maxCells = 0
-	isValidSlice = True
+	L = 0
+	H = 0
 
-	pizzaDict = {}
+	pizzaArray = np.empty
+	dish = np.empty
 
-	# this is run once only when we create the object
 	def __init__(self, fileName):
 		"""
-		:type textFileName: string
+		:type fileName: string
 
 		This function takes a textFileName as input, finds that file in the same directory, processes it, 
 		and updates the properties and pizzaDict
 		"""
+		file = open(fileName)
+		lines = file.readlines()
+		self.rows, self.cols, self.L, self.H = [int(val) for val in lines[0].split()]
+		self.pizzaArray = np.array([list(map(lambda item: 1 if item == 'T' else 0, row.strip())) for row in lines[1:]])
+		file.close()
 
-		### processing code goes here:
+		self.dish = np.zeros(self.pizzaArray.shape, dtype=int)
 
-		lines = self.textFile(fileName)
-		self.updateRCLH(lines)
-		self.updatePizzaDict(lines)
-
-		### testing is done here:
-
-		self.testProperties()
-		self.testPizzaDict()
-
-
-
-	### processing functions written here
-	
-	def textFile(self, fileName):
+	def cut(self, slice):
 		"""
-		returns a python text file from the directory
+		:type slice: Slice object
 		"""
-		lines = open(fileName).readlines()
-		return lines
-	    
-	def updateRCLH(self, lines):
-		"""
-		grab the data from the textFile and update the properties
-		"""
-		self.rows, self.cols, self.minOfEachIngredient, self.maxCells = [int(val) for val in lines[0].split()]
+		self.dish[slice.startRow:slice.endRow, slice.startCol:slice.endCol] = 1
+		return self.pizzaArray[slice.startRow:slice.endRow, slice.startCol:slice.endCol]
 
-	def updatePizzaDict(self, lines):
-		"""
-		grab the data from the textFile and update pizzaDict
-		"""
-		key = 0
-		for row in lines[1:]:
-			self.pizzaDict[key] = list(map(lambda item: 1 if item == 'T' else 0, row.strip()))
-			key += 1
+	def reset(self):
+		self.dish = np.zeros(self.pizzaArray.shape, dtype=int)
 
 
-	### testing functions written here
+if __name__ == "__main__":
+	fileName = "inputFiles/a_example.in"
+	print(f"\nUsing '{fileName}' as sample input file")
+	pizza = Pizza(fileName)
+	print("Number of rows of the Pizza: ", pizza.rows)
+	print("The pizza looks like this: \n", pizza.pizzaArray, "\n\n")
+	print("The dish looks like this: \n", pizza.dish, "\n")
+	print("Please run testPizza.py to make sure this works properly.\n")
 
-	def testRows(self):
-		assert self.rows >= 1 and self.rows <= 1000, "Rows out of bounds!"
+	print("Getting a slice...\n") 
+	slice = Slice(0, 0, 2, 2)
+	print("Let's cut out a piece!")
+	print(pizza.cut(slice), "\n")
+	print("The dish looks like this: \n", pizza.dish, "\n")
 
-	def testCols(self):
-		assert self.cols >= 1 and self.cols <= 1000, "Rows out of bounds!"
-
-	def testMinOfEachIngredient(self):
-		assert self.minOfEachIngredient >= 1 and self.minOfEachIngredient <= 1000, "Rows out of bounds!"
-
-	def testMaxCells(self):
-		assert self.maxCells >= 1 and self.maxCells <= 1000, "Rows out of bounds!"
-
-
-	def testProperties(self):
-		self.testRows()
-		self.testCols()
-		self.testMinOfEachIngredient()
-		self.testMaxCells()
-		print("Properties tests passed!")
-
-	def testPizzaDict(self):
-		assert len(self.pizzaDict.keys()) == self.rows, "What the hell?! Number of keys should equal number of rows!"
-		for row in self.pizzaDict.values():
-			assert len(row) == self.cols, "Hey!! Number of items in list should equal number of columns!"
-		print("PizzaDict test passed!")
-
-
-	def isValidSlice(self):
-		return self.rows * self.cols <= self.maxCells
-
-pizza = Pizza("inputFiles/a_example.in")
-
-# Processing and testing done. We can use now! Yay!
-print("Number of rows of the Pizza: ", pizza.rows)
-print("The pizza looks like this: ", pizza.pizzaDict)
+	print("Hey! Let's extend to the right!")
+	slice.extendRight()
+	print("Now, it looks like: ")
+	print(pizza.cut(slice), "\n")
+	print("The dish looks like this: \n", pizza.dish, "\n")
