@@ -28,8 +28,20 @@ class Slice:
 	def extendDown(self):
 		self.endRow += 1
 
+class Cell(Slice):
+
+	def __init__(self, row, col):
+		self.startRow = row
+		self.startCol = col
+		self.endRow = row
+		self.endCol = col
+
 
 if __name__ == "__main__":
 	slice = Slice(0, 0, 2, 2)
+	cell = Cell(2, 2)
+
+
+
 
  
