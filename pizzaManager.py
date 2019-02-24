@@ -1,8 +1,9 @@
 from pizzaStructure import Pizza
 from sliceStructure import Slice
 import numpy as np
-
 # list of slices
+
+
 class PizzaManager:
 	def __init__(self, pizza):
 		self.pizza = pizza
