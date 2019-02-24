@@ -2,7 +2,8 @@ from pizzaStructure import Pizza
 from sliceStructure import Slice, Cell
 import numpy as np
 
-def isValidSlice(pizza, slice):
+
+def isValidSlice(self, slice):
 		for row in range(slice.startRow, slice.endRow + 1):
 			for col in range(slice.startCol, slice.endCol + 1):
 				if row < 0 or row > pizza.rows - 1 or col < 0 or col > pizza.cols - 1 or pizza.dish[row, col] == 1:
