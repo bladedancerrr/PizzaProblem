@@ -28,6 +28,11 @@ class Slice:
 	def extendDown(self):
 		self.endRow += 1
 
+	def display(self, pizza):
+		paper = np.zeros(pizza.pizzaArray.shape, dtype=int)
+		paper[self.startRow:self.endRow + 1, self.startCol:self.endCol + 1] = 1
+		print(paper)
+
 class Cell(Slice):
 
 	def __init__(self, row, col):
