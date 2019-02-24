@@ -11,6 +11,7 @@ def is_validate_slice(pizza, a_slice):
 
     number_of_cells = get_slice_size(a_slice)
     number_of_mushroom = number_of_cells - number_of_tomato
+    print("T: ", number_of_tomato, "M: ", number_of_mushroom)
 
     return (number_of_tomato >= pizza.L) and (number_of_mushroom >= pizza.L)
 

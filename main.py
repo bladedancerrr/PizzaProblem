@@ -9,11 +9,21 @@ from actualCutting import perform_actual_cutting
 def main(fileName):
 	pizza = Pizza(fileName)
 	shape = pizzaShape(pizza)
+	print(shape)
 	dimension_list = determineCutPoints((pizza.rows, pizza.cols), shape)
 	slices = perform_actual_cutting(dimension_list)
+	print("amount of slices: ", len(slices))
+	i = 0
 	for slice in slices:
-		if not is_validate_slice(slice):
+		i += 1
+		slice.display(pizza)
+		print(is_validate_slice(pizza, slice))
+		if is_validate_slice(pizza, slice):
+			print("Valid")
+		else:
 			slices.remove(slice)
+			print("Invalid")
+	print(i)
 	print_file(slices)
 
 
