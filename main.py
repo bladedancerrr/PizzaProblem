@@ -21,8 +21,10 @@ def main(fileName):
 		if is_validate_slice(pizza, slice):
 			validSlices.append(slice)
 	print_file(validSlices)
+	print("Covered ", (len(validSlices)*shape[0]*shape[1]/(pizza.rows*pizza.cols))*100, end=" %\n")
 
 
 if __name__ == '__main__':
-	inputFile = "inputFiles/a_example.in"
+	fileNames = ["inputFiles/a_example.in", "inputFiles/b_small.in", "inputFiles/c_medium.in", "inputFiles/d_big.in"]
+	inputFile = fileNames[3]
 	main(inputFile)
