@@ -13,18 +13,19 @@ def main(fileName):
 	slices = perform_actual_cutting(dimension_list)
 	validSlices = []
 	for slice in slices:
-		print("Cut out this: ", pizza.cut(slice), "\n")
-		print("From this pizza: ") 
-		slice.display(pizza)
-		print("\n")
-		print("valid Slice? ", is_validate_slice(pizza, slice))
+		# print("Cut out this: ", pizza.cut(slice), "\n")
+		# print("From this pizza: ") 
+		# slice.display(pizza)
+		# print("\n")
+		# print("valid Slice? ", is_validate_slice(pizza, slice))
 		if is_validate_slice(pizza, slice):
 			validSlices.append(slice)
+			input()
 	print_file(validSlices)
-	print("Covered ", (len(validSlices)*shape[0]*shape[1]/(pizza.rows*pizza.cols))*100, end=" %\n")
+	return str(len(validSlices)*shape[0]*shape[1]/(pizza.rows*pizza.cols)*100) + " %"
 
 
 if __name__ == '__main__':
 	fileNames = ["inputFiles/a_example.in", "inputFiles/b_small.in", "inputFiles/c_medium.in", "inputFiles/d_big.in"]
-	inputFile = fileNames[3]
-	main(inputFile)
+	file = 3
+	main(fileNames[file])
