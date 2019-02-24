@@ -2,10 +2,6 @@ import numpy as np
 from sliceStructure import Slice
 import matplotlib.pyplot as plt
 
-class Dish:
-	def __init__(self, pizza):
-		self.dish = np.zeros(self.pizzaArray.shape, dtype=int)
-
 class Pizza:
 	rows = 0
 	cols = 0
