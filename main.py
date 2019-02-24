@@ -13,17 +13,16 @@ def main(fileName):
 	dimension_list = determineCutPoints((pizza.rows, pizza.cols), shape)
 	slices = perform_actual_cutting(dimension_list)
 	print("amount of slices: ", len(slices))
-	i = 0
-	for slice in slices:
-		i += 1
-		slice.display(pizza)
-		print(is_validate_slice(pizza, slice))
-		if is_validate_slice(pizza, slice):
+	for i in range(len(slices)):
+		slices[i].display(pizza)
+		print(is_validate_slice(pizza, slices[i]))
+		if is_validate_slice(pizza, slices[i]):
 			print("Valid")
 		else:
-			slices.remove(slice)
+			slices.remove(slices[i])
 			print("Invalid")
-	print(i)
+			
+	print("Times run: ", i)
 	print_file(slices)
 
 
