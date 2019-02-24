@@ -17,7 +17,7 @@ def is_validate_slice(pizza, a_slice):
 
 
 def get_slice_size(slice):
-    return (slice.endRow - slice.startRow + 1) * (slice.endCol - slice.startCol + 1 _)
+    return (slice.endRow - slice.startRow + 1) * (slice.endCol - slice.startCol + 1)
 
 
 if __name__ == '__main__':

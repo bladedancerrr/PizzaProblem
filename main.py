@@ -12,7 +12,7 @@ def main(fileName):
 	dimension_list = determineCutPoints(pizza.rows, pizza.cols, shape)
 	slices = perform_actual_cutting(dimension_list)
 	for slice in slices:
-		if !(is_validate_slice(slice)):
+		if not is_validate_slice(slice):
 			slices.remove(slice)
 	print_file(slices)
 
