@@ -34,8 +34,8 @@ class Pizza:
 		"""
 		:type slice: Slice object
 		"""
-		self.dish[slice.startRow:slice.endRow, slice.startCol:slice.endCol] = 1
-		return self.pizzaArray[slice.startRow:slice.endRow, slice.startCol:slice.endCol]
+		self.dish[slice.startRow:slice.endRow + 1, slice.startCol:slice.endCol + 1] = 1
+		return self.pizzaArray[slice.startRow:slice.endRow + 1, slice.startCol:slice.endCol + 1]
 
 	def reset(self):
 		self.dish = np.zeros(self.pizzaArray.shape, dtype=int)
