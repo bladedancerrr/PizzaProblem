@@ -73,7 +73,7 @@ class PizzaManager:
 		for slice in startSlices:
 			slicePaths = [[slice]]
 			i = 0
-			for cell in self.neighbourCells(slice)
+			for cell in self.neighbourCells(slice):
 				slicePaths
 
 
