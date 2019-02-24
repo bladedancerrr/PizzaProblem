@@ -19,15 +19,25 @@ def determineCutPoints(dimension, size):
 	horizontalPoints = [] 
 	verticalPoints = []
 
-	horizontalPoints.append([0, lSlice - 1])
-	verticalPoints.append([0, hSlice -1])
-	for i in range(1, l//lSlice):
-		horizontalPoints.append(list(map(lambda x: x+lSlice, horizontalPoints[i - 1])))
-	for j in range(1, h//hSlice):
-		verticalPoints.append(list(map(lambda x: x+hSlice, verticalPoints[j - 1])))
+	startPoint = 0
+	endPoint = lSlice - 1
+
+	while endPoint < l:
+		horizontalPoints.append([startPoint, endPoint])
+		startPoint = endPoint + 1
+		endPoint = startPoint + lSlice - 1
+
+	startPoint = 0
+	endPoint = hSlice - 1
+
+	while endPoint < h:
+		for i in range(len(horizontalPoints)):
+			verticalPoints.append([startPoint, endPoint])
+		startPoint = endPoint + 1
+		endPoint = startPoint + hSlice - 1
 
 	return [horizontalPoints, verticalPoints]
 
 
 
-determineCutPoints((20,20),(15,15))
+print(determineCutPoints((3, 5),(2, 1)))
