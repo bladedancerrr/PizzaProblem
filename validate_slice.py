@@ -12,13 +12,12 @@ def is_validate_slice(pizza, a_slice):
     number_of_cells = get_slice_size(a_slice)
     number_of_mushroom = number_of_cells - number_of_tomato
 
-    print("number of tomatoes: ", number_of_tomato, "\nnumber of mushrooms: ", number_of_mushroom)
     return (number_of_tomato >= pizza.L) and (number_of_mushroom >= pizza.L)
 
 
 
 def get_slice_size(slice):
-    return (slice.endRow - slice.startRow + 1) * (slice.endCol - slice.startCol + 1)
+    return (slice.endRow - slice.startRow + 1) * (slice.endCol - slice.startCol + 1 _)
 
 
 if __name__ == '__main__':
