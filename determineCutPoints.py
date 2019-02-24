@@ -26,7 +26,7 @@ def determineCutPoints(dimension, size):
 	for j in range(1, h//hSlice):
 		verticalPoints.append(list(map(lambda x: x+hSlice, verticalPoints[j - 1])))
 
-	print(horizontalPoints, verticalPoints)
+	return [horizontalPoints, verticalPoints]
 
 
 

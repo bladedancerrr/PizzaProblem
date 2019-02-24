@@ -3,6 +3,7 @@ from sliceStructure import Slice
 
 
 def perform_actual_cutting(dimension_list):
+    assert dimension_list != None
     horizontal_dimension = dimension_list[0]
     vertical_dimension = dimension_list[1]
 
